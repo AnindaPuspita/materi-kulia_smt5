@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Data Mahasiswa</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        form {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 100%;
+            max-width: 600px;
+            transition: transform 0.3s;
+        }
+        form:hover {
+            transform: scale(1.02);
+        }
+        .form-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        .form-table td {
+            padding: 12px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: border-color 0.3s;
+        }
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        input[type="date"]:focus,
+        input[type="file"]:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+        .hobby {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .hobby input {
+            margin-right: 5px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 12px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+            width: 48%;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        button[type="reset"] {
+            background-color: #6c757d;
+        }
+        button[type="reset"]:hover {
+            background-color: #5a6268;
+        }
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <h1>Form Data Mahasiswa</h1>
+    
+    <form method="post" onsubmit="return handleSubmit(event)">
+        <table class="form-table">
+            <tr>
+                <td><label for="Nama">Nama Lengkap</label></td>
+                <td><input type="text" name="Nama" id="Nama" placeholder="Isi Nama Lengkap" value=""></td>
+            </tr>
+            <tr>
+                <td><label for="Email">Email</label></td>
+                <td><input type="email" id="Email" name="Email" placeholder="Masukan E-mail" value=""></td>
+            </tr>
+            <tr>
+                <td><label for="TempatLahir">Tempat, Tanggal Lahir</label></td>
+                <td>
+                    <input type="text" name="TempatLahir" id="TempatLahir" placeholder="Tempat Lahir" size="20" value="">
+                    <input type="date" name="tgl" id="tgl" value="">
+                </td>
+            </tr>
+            <tr>
+                <td><label>Jenis Kelamin</label></td>
+                <td>
+                    <input type="radio" name="jkel" id="jkPria" value="pria" checked>
+                    <label for="jkPria">Pria</label>
+                    <input type="radio" name="jkel" id="jkWanita" value="wanita">
+                    <label for="jkWanita">Wanita</label>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Hobby</label></td>
+                <td class="hobby">
+                    <input type="checkbox" name="Hobby1" id="Hobby1">
+                    <label for="Hobby1">Ngoding</label>
+                    <input type="checkbox" name="Hobby2" id="Hobby2">
+                    <label for="Hobby2">Gaming</label>
+                    <input type="checkbox" name="Hobby3" id="Hobby3">
+                    <label for="Hobby3">Sleeping</label>
+                    <input type="checkbox" name="Hobby4" id="Hobby4">
+                    <label for="Hobby4">Swimming</label>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="foto">Upload Foto</label></td>
+                <td><input type="file" name="foto" id="foto" accept=".jpg, .png"></td>
+            </tr>
+            <tr>
+                <td><label for="audio">Upload Audio</label></td>
+                <td><input type="file" name="audio" id="audio" accept=".mp3, .wav"></td>
+            </tr>
+            <tr>
+                <td><label for="video">Upload Video</label></td>
+                <td><input type="file" name="video" id="video" accept=".mp4, .mov"></td>
+            </tr>
+        </table>
+        
+        <table class="form-table">
+            <tr>
+                <td><label for="Alamat">Alamat</label></td>
+                <td><input type="text" name="Alamat" id="Alamat" placeholder="Isi Alamat" value=""></td>
+            </tr>
+            <tr>
+                <td><label for="Telepon"> Nomor Telepon</label></td>
+                <td>
+                    <input type="tel" name="Telepon" id="Telepon" placeholder="Masukkan Nomor Telepon" 
+                           pattern="^[0-9]{10,15}$" required>
+                </td>
+            </tr>
+        </table>
+        
+        <div class="button-container">
+            <button type="submit">Submit</button>
+            <button type="reset" onclick="handleReset()">Reset</button>
+        </div>
+    </form>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert("Data telah disubmit!");
+            window.location.reload();
+        }
+
+        function handleReset() {
+            window.location.reload();
+        }
+    </script>
+</body>
+</html>
